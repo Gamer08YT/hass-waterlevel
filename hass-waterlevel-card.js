@@ -1,3 +1,6 @@
+/**
+ * Card Implementation.
+ */
 class WaterlevelCard extends HTMLElement {
     // Store last Value to change only when updated.
     valueIO = null;
@@ -9,12 +12,15 @@ class WaterlevelCard extends HTMLElement {
         if (!this.content) {
             this.innerHTML = `
         <ha-card header="Zisterne">
-         <div class="tank-container">
-            <img style="height: 15rem; width: auto; position: relative;" src="/local/images/tank.png">
-          <div class="card-content"></div>
-        </div>
-        </ha-card>
-      `;
+         <div class="tank-container" style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-content: center; align-items: center;">
+            <div class="tank-inner" style="position: relative;">
+                <img style="height: 15rem; width: auto; position: relative;" src="/local/images/tank.png" />
+                <div class="tank-water" style="position: absolute; max-height: 55%; height: 20%; bottom: 10%; right: 6.7%; left: 15%; background-repeat: no-repeat; background-size: cover; background-image: url(/local/images/water.jpg);">
+            </div>
+         </div>
+        </ha-card`;
+
+            // Update Content Var.
             this.content = this.querySelector("div");
         }
 
@@ -25,12 +31,12 @@ class WaterlevelCard extends HTMLElement {
 
         // Update Content if Value has changed.
         if (this.valueIO !== stateStr) {
-            this.content.innerHTML = `
-      The state of ${entityId} is ${stateStr}!
-      <br><br>
-                 <div class="tank-water" style="width: 100%; height: ${stateStr}px; background-image: url(/local/images/water.jpg);">
-          
-       </div>`;
+            console.log(stateStr + "/" + this.calcLevel(stateStr) + "%");
+            console.warn(this.getImageElement().style.height);
+
+            // Update Height of Image.
+            this.getImageElement().style.height = (Number.parseInt(this.calcLevel(stateStr)) + "px");
+            ;
 
             // Update cached Value.
             this.valueIO = stateStr;
@@ -38,9 +44,14 @@ class WaterlevelCard extends HTMLElement {
 
         // Set Value if not null.
         if (this.valueIO == null)
-            this.valueIO = stateStr
+            this.valueIO = stateStr;
+    }
 
-            ;
+    /**
+     * Get Fluid Image Element.
+     */
+    getImageElement() {
+        return this.getElementsByTagName("ha-card")[0].getElementsByClassName("tank-container")[0].getElementsByClassName("tank-inner")[0].getElementsByClassName("tank-water")[0];
     }
 
     // The user supplied configuration. Throw an exception and Home Assistant
@@ -48,6 +59,10 @@ class WaterlevelCard extends HTMLElement {
     setConfig(config) {
         if (!config.entity) {
             throw new Error("You need to define an entity");
+        }
+
+        if (!config.volume) {
+            throw  new Error("You need to define the max Volume of your Tank.");
         }
         this.config = config;
     }
@@ -58,9 +73,57 @@ class WaterlevelCard extends HTMLElement {
         return 3;
     }
 
+    /**
+     * Calculate Level with Max Size of Tank.
+     * @param measureIO
+     * @returns {number}
+     */
+    calcLevel(measureIO) {
+        const maxIO = (this.config.volume);
+
+        return Number.parseInt(measureIO) / (maxIO / 100);
+    }
+
+    static getConfigElement() {
+        return document.createElement("hass-waterlevel-editor");
+    }
+
+    static getStubConfig() {
+        return {entity: "sun.sun"}
+    }
+
 }
 
+// Define Card Class.
 customElements.define("hass-waterlevel-card", WaterlevelCard);
+
+/**
+ * Graphical Card Configuration.
+ */
+class WaterlevelCardConfig extends HTMLElement {
+    setConfig(config) {
+        this._config = config;
+    }
+
+    configChanged(newConfig) {
+        const event = new Event("config-changed", {
+            bubbles: true,
+            composed: true,
+        });
+        event.detail = {config: newConfig};
+        this.dispatchEvent(event);
+    }
+}
+
+// Define Configuration Class.
+customElements.define("hass-waterlevel-editor", WaterlevelCardConfig);
+window.customCards = window.customCards || [];
+window.customCards.push({
+    type: "hass-waterlevel-card",
+    name: "Content Card",
+    preview: false, // Optional - defaults to false
+    description: "A custom card made by me!", // Optional
+});
 
 function loadCSS(url) {
     const link = document.createElement("link");
