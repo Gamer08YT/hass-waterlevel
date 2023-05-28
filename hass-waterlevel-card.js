@@ -85,17 +85,28 @@ class WaterlevelCard extends HTMLElement {
     }
 
     static getConfigElement() {
-        return document.createElement("hass-waterlevel-editor");
+        const elementIO = document.createElement("hass-waterlevel-editor");
+
+        elementIO.innerHTML = "<div>Currently not supported, please use YAML Editor.<br><br>" +
+            "<code style='background-color: gray'>type: custom:hass-waterlevel-card<br>" +
+            "entity: sensor...<br>" +
+            "volume: 100\n</code></div>";
+
+        return elementIO;
     }
 
     static getStubConfig() {
-        return {entity: "sun.sun"}
+        return {
+            entity: "",
+            volume: 1000
+        }
     }
 
 }
 
 // Define Card Class.
 customElements.define("hass-waterlevel-card", WaterlevelCard);
+
 
 /**
  * Graphical Card Configuration.
@@ -120,9 +131,9 @@ customElements.define("hass-waterlevel-editor", WaterlevelCardConfig);
 window.customCards = window.customCards || [];
 window.customCards.push({
     type: "hass-waterlevel-card",
-    name: "Content Card",
+    name: "Tank Level Card",
     preview: false, // Optional - defaults to false
-    description: "A custom card made by me!", // Optional
+    description: "This card shows the current fluid level in a tank or cistern, as well as the percentage of capacity and the volume of fluid.", // Optional
 });
 
 function loadCSS(url) {
