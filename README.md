@@ -10,7 +10,6 @@
 
 ![img.png](images/preview.png)
 
-
 ## Configuration
 
 A graphical user interface (GUI) to configure the card is currently not available.
@@ -19,11 +18,12 @@ After installation, simply press "Add Card", search for "Tank Level Card", and a
 
 ## Options
 
-| Name   | Type   | Requirement  | Description                         | Default |
-|--------|--------|--------------|-------------------------------------|---------|
-| type   | string | **Required** | `custom:hass-waterlevel-card`       |         |
-| entity | Entity | **Required** | Entity wich stores the Level State. |         |
-| volume | Number | **Required** | Max Volume of your Tank.            | 1000    |
+| Name   | Type   | Requirement  | Description                         | Default    |
+|--------|--------|--------------|-------------------------------------|------------|
+| type   | string | **Required** | `custom:hass-waterlevel-card`       |            |
+| entity | Entity | **Required** | Entity wich stores the Level State. |            |
+| volume | Number | **Required** | Max Volume of your Tank.            | 1000       |
+| title  | string | Optional     | Title of Card                       | Tank Level |
 
 ### Example configuration
 

@@ -11,7 +11,7 @@ class WaterlevelCard extends HTMLElement {
         // Initialize the content if it's not there yet.
         if (!this.content) {
             this.innerHTML = `
-        <ha-card header="Zisterne">
+        <ha-card header="` + this.config.title + `">
          <div class="tank-container" style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-content: center; align-items: center;">
             <div class="tank-inner" style="position: relative;">
                 <img style="height: 15rem; width: auto; position: relative;" src="/local/images/tank.png" />
@@ -31,12 +31,8 @@ class WaterlevelCard extends HTMLElement {
 
         // Update Content if Value has changed.
         if (this.valueIO !== stateStr) {
-            console.log(stateStr + "/" + this.calcLevel(stateStr) + "%");
-            console.warn(this.getImageElement().style.height);
-
             // Update Height of Image.
             this.getImageElement().style.height = (Number.parseInt(this.calcLevel(stateStr)) + "px");
-            ;
 
             // Update cached Value.
             this.valueIO = stateStr;
@@ -64,6 +60,7 @@ class WaterlevelCard extends HTMLElement {
         if (!config.volume) {
             throw  new Error("You need to define the max Volume of your Tank.");
         }
+
         this.config = config;
     }
 
@@ -90,7 +87,8 @@ class WaterlevelCard extends HTMLElement {
         elementIO.innerHTML = "<div>Currently not supported, please use YAML Editor.<br><br>" +
             "<code style='background-color: gray'>type: custom:hass-waterlevel-card<br>" +
             "entity: sensor...<br>" +
-            "volume: 100\n</code></div>";
+            "volume: 100<br>" +
+            "title: Tank</code></div>";
 
         return elementIO;
     }
@@ -98,7 +96,8 @@ class WaterlevelCard extends HTMLElement {
     static getStubConfig() {
         return {
             entity: "",
-            volume: 1000
+            volume: 1000,
+            title: "Tank Level"
         }
     }
 
