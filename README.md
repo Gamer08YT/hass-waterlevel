@@ -1,12 +1,6 @@
 # Tank Level Card / Cistern Card by [@Gamer08YT](https://www.github.com/Gamer08YT)
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Gamer08YT&repository=hass-waterlevel&category=frontend)
-[![GitHub Release][releases-shield]][releases]
-![GitHub Downloads][downloads-shield]
-
-[![License][license-shield]](LICENSE)
-![Project Maintenance][maintenance-shield]
-[![GitHub Activity][commits-shield]][commits]
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Gamer08YT&repository=hass-waterlevel&category=frontend) ![Project Maintenance][maintenance-shield]
 
 ![img.png](images/preview.png)
 
@@ -49,16 +43,10 @@ Click here:
 [![](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Gamer08YT&repository=hass-waterlevel&category=frontend)
 
 
-[commits-shield]: https://img.shields.io/github/commit-activity/y/Sese-Schneider/ha-energy-overview-card.svg?style=for-the-badge
 
-[downloads-shield]: https://img.shields.io/github/downloads/Sese-Schneider/ha-energy-overview-card/total.svg?style=for-the-badge
 
-[commits]: https://github.com/Sese-Schneider/ha-energy-overview-card/commits/main
-
-[license-shield]: https://img.shields.io/github/license/Sese-Schneider/ha-energy-overview-card.svg?style=for-the-badge
+[commits]: https://github.com/Gamer08YT/hass-waterlevel/commits/main
 
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg?style=for-the-badge
 
-[releases-shield]: https://img.shields.io/github/release/Sese-Schneider/ha-energy-overview-card.svg?style=for-the-badge
-
-[releases]: https://github.com/Sese-Schneider/ha-energy-overview-card/releases
+[releases]: https://github.com/Gamer08YT/hass-waterlevel/releases
