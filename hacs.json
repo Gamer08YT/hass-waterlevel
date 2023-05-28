@@ -1,0 +1,5 @@
+{
+  "name": "Water Level",
+  "filename": "hass-waterlevel-card.js",
+  "homeassistant": "2021.11.0"
+}
