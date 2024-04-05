@@ -1,6 +1,6 @@
 # Tank Level Card / Cistern Card by [@Gamer08YT](https://www.github.com/Gamer08YT)
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Gamer08YT&repository=hass-waterlevel&category=frontend) ![Project Maintenance][maintenance-shield]
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Gamer08YT&repository=hass-waterlevel&category=plugin) ![Project Maintenance][maintenance-shield]
 
 ![img.png](images/preview.png)
 
@@ -40,7 +40,7 @@ _or_
 
 Click here:
 
-[![](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Gamer08YT&repository=hass-waterlevel&category=frontend)
+[![](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Gamer08YT&repository=hass-waterlevel&category=plugin)
 
 
 
